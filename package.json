@@ -1,0 +1,17 @@
+{
+  "name": "qili-web-bridge",
+  "version": "1.0.0",
+  "description": "bridge",
+  "main": "index.js",
+  "repository": "https://github.com/lalali/qili-web-bridge",
+  "author": "lalalic@gmail.com",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "graphql-redis-subscriptions": "^2.6.0",
+    "react-native-use-qili": "^1.0.4"
+  },
+  "scripts": {
+    "dev": "node --inspect ./dev.js"
+  }
+}

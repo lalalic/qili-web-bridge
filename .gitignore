@@ -1,0 +1,4 @@
+log/
+.env
+testdata/
+node_modules/

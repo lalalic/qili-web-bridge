@@ -1,0 +1,38 @@
+name: export-updates
+on:
+  push:
+    branches: [ master ]
+
+jobs: 
+  deploy:
+    environment: deploy
+    runs-on: ubuntu-latest
+    env:
+      DEPLOY_HOST: ${{ secrets.SERVER_HOST }}
+      DEPLOY_USER: ${{ secrets.SERVER_USER }}
+      QILI_APP: parrot
+      QILI_UPDATES: updates
+      production: true
+
+    steps:
+    - run: sudo apt-get install -y sshpass
+    - uses: actions/checkout@v3
+    - name: Use Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16
+        cache: 'yarn'
+    - run: npm install -g yarn 
+    - run: yarn
+    - name: deploy cloud code to qili2
+      run: | 
+          export SSHPASS=${{ secrets.SERVER_PASS }}
+          sshpass -e scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -r www "$DEPLOY_USER@$DEPLOY_HOST:/data/apps/bridge"
+          sshpass -e scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null package.json "$DEPLOY_USER@$DEPLOY_HOST:/data/apps/bridge"
+          sshpass -e scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null index.js "$DEPLOY_USER@$DEPLOY_HOST:/data/apps/bridge"
+          sshpass -e scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null qili.conf.js "$DEPLOY_USER@$DEPLOY_HOST:/data/apps/bridge"
+          sshpass -e scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null yarn.lock "$DEPLOY_USER@$DEPLOY_HOST:/data/apps/bridge"
+          sshpass -e scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null nginx.conf "$DEPLOY_USER@$DEPLOY_HOST:/data/apps/bridge"
+          sshpass -e ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} "./qili.travis.deploy.sh"
+    - run: yarn export-updates
+
