@@ -17,13 +17,6 @@ jobs:
     steps:
     - run: sudo apt-get install -y sshpass
     - uses: actions/checkout@v3
-    - name: Use Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: 16
-        cache: 'yarn'
-    - run: npm install -g yarn 
-    - run: yarn
     - name: deploy cloud code to qili2
       run: | 
           export SSHPASS=${{ secrets.SERVER_PASS }}
