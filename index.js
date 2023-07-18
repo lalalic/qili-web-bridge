@@ -28,7 +28,7 @@ Cloud.addModule({
     name:"events",
     events:{
         graphql(request){
-            console.debug(`graphql: request?.query`)
+            console.debug(`graphql: ${request?.query}`)
         },
         load(){
             console.info('is ready')
