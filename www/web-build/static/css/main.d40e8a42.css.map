@@ -1,1 +1,0 @@
-{"version":3,"file":"static/css/main.d40e8a42.css","mappings":"AAAA,KAII,eAAiB,CADjB,qBAAsB,CADtB,WAAY,CADZ,WAIJ,CACA,MACI,qBACJ","sources":["src/style.css"],"sourcesContent":["body{\r\n    width: 600px;\r\n    margin: auto;\r\n    border: 1px solid gray;\r\n    background: black;\r\n}\r\n#root{\r\n    background-color: white;\r\n}"],"names":[],"sourceRoot":""}
