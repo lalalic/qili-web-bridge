@@ -26,7 +26,7 @@ Cloud.addModule(Cloud.AccessToken)
  
 Cloud.addModule({
     typeDefs:`
-        type Anonymous{
+        type Anonymous1{
             test:String
         }
     `
