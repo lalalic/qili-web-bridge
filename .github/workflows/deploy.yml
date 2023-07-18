@@ -4,24 +4,7 @@ on:
     branches: [ master ]
 
 jobs: 
-  versions:
-    runs-on: ubuntu-latest
-    steps:
-    - run: sudo apt-get install -y sshpass
-    - uses: actions/checkout@v3
-      with:
-        fetch-depth: 2
-    - run: |
-        git checkout HEAD^
-        echo "::set-output name=last::$(node -p 'require(`./package.json`).version')"
-        git checkout master
-        echo "::set-output name=current::$(node -p 'require(`./package.json`).version')" 
-      id: versions
-    - run: echo "${{steps.versions.outputs.last}},${{steps.versions.outputs.current}} "
-
   deploy:
-    needs: versions
-    if: ${{ needs.versions.outputs.last !=  needs.versions.outputs.current}}
     environment: deploy
     runs-on: ubuntu-latest
     env:
@@ -30,7 +13,11 @@ jobs:
       QILI_APP: parrot
       QILI_UPDATES: updates
       production: true
-    steps: 
+    steps:
+    - run: sudo apt-get install -y sshpass
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 2
     - name: deploy cloud code to qili2
       run: | 
           export SSHPASS=${{ secrets.SERVER_PASS }}
