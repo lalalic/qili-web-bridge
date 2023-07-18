@@ -28,7 +28,7 @@ jobs:
     - name: deploy cloud code to qili2
       run: | 
           export SSHPASS=${{ secrets.SERVER_PASS }}
-          sshpass -e ssh $DEPLOY_USER@$DEPLOY_HOST "rm /data/apps/bridge/www"
+          sshpass -e ssh $DEPLOY_USER@$DEPLOY_HOST "rm -r /data/apps/bridge/www"
           sshpass -e scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -r www/web-build/* "$DEPLOY_USER@$DEPLOY_HOST:/data/apps/bridge/www"
           sshpass -e scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null package.json "$DEPLOY_USER@$DEPLOY_HOST:/data/apps/bridge"
           sshpass -e scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null index.js "$DEPLOY_USER@$DEPLOY_HOST:/data/apps/bridge"
