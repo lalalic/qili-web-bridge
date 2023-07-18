@@ -42,6 +42,9 @@ Cloud.addModule({
 
         ["static.matched"](url){
             console.debug(`>> ${url}`)
+        },
+        ["static.no"](url){
+            console.debug(`>> !${url}`)
         }
     }
 })
