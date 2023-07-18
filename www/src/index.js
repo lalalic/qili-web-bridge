@@ -94,6 +94,7 @@ function Home(){
                         })
                         setLatestToken(token)
                         getAccessTokens()
+                        setCreating(false)
                     }
                 }}
             />}

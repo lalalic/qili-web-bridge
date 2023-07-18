@@ -18,9 +18,17 @@ jobs:
     - uses: actions/checkout@v3
       with:
         fetch-depth: 2
+    - name: build www
+      run: |
+        cd www
+        yarn
+        yarn global add npx
+        npx expo export:web
+        cd ..
     - name: deploy cloud code to qili2
       run: | 
           export SSHPASS=${{ secrets.SERVER_PASS }}
+          sshpass -e ssh $DEPLOY_USER@$DEPLOY_HOST "rm /data/apps/bridge/www"
           sshpass -e scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -r www/web-build/* "$DEPLOY_USER@$DEPLOY_HOST:/data/apps/bridge/www"
           sshpass -e scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null package.json "$DEPLOY_USER@$DEPLOY_HOST:/data/apps/bridge"
           sshpass -e scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null index.js "$DEPLOY_USER@$DEPLOY_HOST:/data/apps/bridge"
