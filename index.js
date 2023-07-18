@@ -23,11 +23,25 @@ Cloud.addModule({
 })
 
 Cloud.addModule(Cloud.AccessToken)
- 
+
 Cloud.addModule({
-    typeDefs:`
-        type Anonymous1{
-            test:String
+    name:"events",
+    events:{
+        graphql(request){
+            console.debug(request)
+        },
+        auth(user){
+            console.debug(user)
+        },
+        load(){
+            console.info('is ready')
+        },
+        ["static"](url){
+            console.debug(`> ${url}`)
+        },
+
+        ["static.matched"](url){
+            console.debug(`>> ${url}`)
         }
-    `
+    }
 })
