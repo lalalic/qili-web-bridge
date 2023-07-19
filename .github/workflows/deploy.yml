@@ -36,5 +36,5 @@ jobs:
           sshpass -e scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null qili.conf.js "$DEPLOY_USER@$DEPLOY_HOST:/data/apps/bridge"
           sshpass -e scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null yarn.lock "$DEPLOY_USER@$DEPLOY_HOST:/data/apps/bridge"
           sshpass -e scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null nginx.conf "$DEPLOY_USER@$DEPLOY_HOST:/data/apps/bridge"
-    #sshpass -e ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} "./qili.travis.deploy.sh"
+          sshpass -e ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} "./qili.travis.deploy.sh"
 
