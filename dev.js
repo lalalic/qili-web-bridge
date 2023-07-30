@@ -8,6 +8,7 @@ require(`${qili}/dev`)({
     },
     apiKey:"bridge", 
     vhost:"qili2.com",
+    dbpath:"../qili/test/mongo",
     credentials:(()=>{
         const fs=require('fs')
         const path=require('path')
