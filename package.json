@@ -9,7 +9,7 @@
   "private": true,
   "dependencies": {
     "graphql-redis-subscriptions": "^2.6.0",
-    "react-native-use-qili": "^1.0.64"
+    "react-native-use-qili": "^1.0.65"
   },
   "scripts": {
     "dev": "node --inspect ./dev.js"
