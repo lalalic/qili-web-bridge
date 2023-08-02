@@ -23,8 +23,7 @@ jobs:
         cd www
         yarn
         yarn global add npx
-        npx expo export:web
-        cd ..
+        yarn build
     - name: deploy cloud code to qili2
       run: | 
           export SSHPASS=${{ secrets.SERVER_PASS }}
