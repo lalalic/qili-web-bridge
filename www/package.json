@@ -16,7 +16,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-native": "0.71.8",
-    "react-native-use-qili": "^1.0.72",
+    "react-native-use-qili": "^1.0.73",
     "react-native-web": "~0.18.10"
   },
   "devDependencies": {
