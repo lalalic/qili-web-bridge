@@ -26,6 +26,7 @@ function Home(){
     const [accessTokens, setAccessTokens]=React.useState([])
     const [token, setLatestToken]=React.useState("")
     const [creating, setCreating]=React.useState(false)
+    const [helpers, setHelpers]=React.useState([])
     const getAccessTokens=React.useCallback(async ()=>{
         const {accessTokens, helpers}=(await Qili.fetch({
             query:`{
@@ -43,6 +44,7 @@ function Home(){
               }`
         })).me
         setAccessTokens(accessTokens)
+        setHelpers(helpers)
     },[setAccessTokens])
 
     React.useEffect(()=>{
@@ -82,7 +84,7 @@ function Home(){
 
 
             <View style={{flexGrow:1}}/>
-                {helpers?.length>0 && <Text>helpers: {helpers.join(",")}</Text>}
+                <Text>You are helping with names: [{helpers.join(",")}]</Text>
                 {!!creating && <AccessTokenGenerator 
                     style={{position:"absolute",bottom:0,width:"100%",padding:20, backgroundColor:"gray"}}
                     onCancel={e=>setCreating(false)}
