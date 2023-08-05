@@ -27,7 +27,7 @@ function Home(){
     const [token, setLatestToken]=React.useState("")
     const [creating, setCreating]=React.useState(false)
     const getAccessTokens=React.useCallback(async ()=>{
-        const {accessTokens}=(await Qili.fetch({
+        const {accessTokens, helpers}=(await Qili.fetch({
             query:`{
                 me{
                   accessTokens {
@@ -37,6 +37,8 @@ function Home(){
                     updatedAt
                     hiddenID
                   }
+
+                  helpers
                 }
               }`
         })).me
@@ -78,27 +80,28 @@ function Home(){
                 ))}
             </View>
 
+
             <View style={{flexGrow:1}}/>
-    
-            {!!creating && <AccessTokenGenerator 
-                style={{position:"absolute",bottom:0,width:"100%",padding:20, backgroundColor:"gray"}}
-                onCancel={e=>setCreating(false)}
-                onSubmit={async name=>{
-                    debugger
-                    if(!accessTokens.find(a=>a.name==name)){
-                        const {generateAccessToken:token}=await Qili.fetch({
-                            query:`mutation($type:String, $name:String!){
-                                generateAccessToken(type:$type, name:$name)
-                            }`,
-                            variables:{name}
-                        })
-                        setLatestToken(token)
-                        getAccessTokens()
-                        setCreating(false)
-                    }
-                }}
-            />}
-        </View>
+                {helpers?.length>0 && <Text>helpers: {helpers.join(",")}</Text>}
+                {!!creating && <AccessTokenGenerator 
+                    style={{position:"absolute",bottom:0,width:"100%",padding:20, backgroundColor:"gray"}}
+                    onCancel={e=>setCreating(false)}
+                    onSubmit={async name=>{
+                        debugger
+                        if(!accessTokens.find(a=>a.name==name)){
+                            const {generateAccessToken:token}=await Qili.fetch({
+                                query:`mutation($type:String, $name:String!){
+                                    generateAccessToken(type:$type, name:$name)
+                                }`,
+                                variables:{name}
+                            })
+                            setLatestToken(token)
+                            getAccessTokens()
+                            setCreating(false)
+                        }
+                    }}
+                />}
+            </View>
     )
 }
 

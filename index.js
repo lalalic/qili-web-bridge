@@ -1,5 +1,5 @@
-Cloud.addModule({
-    ...require("react-native-use-qili/cloud/web-proxy")(
+Cloud.addModule(
+    require("react-native-use-qili/cloud/web-proxy")(
         (()=>{
             if(__DEV__)
                 return
@@ -10,8 +10,8 @@ Cloud.addModule({
                 }
             })
         })()
-    ),
-})
+    )
+)
 
 Cloud.addModule(Cloud.AccessToken)
 
