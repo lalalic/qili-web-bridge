@@ -969,10 +969,10 @@ react-native-material-ripple@^0.9.1:
   dependencies:
     prop-types "^15.5.10"
 
-react-native-use-qili@^1.0.75:
-  version "1.0.75"
-  resolved "https://registry.yarnpkg.com/react-native-use-qili/-/react-native-use-qili-1.0.75.tgz#d8a79d02ef69d4185880a5a006a775abe6ddb9f8"
-  integrity sha512-f8Fsy3OISc0lCdzAX/Oj4PPuyKUEtRp9ncX5po8PQZlgrDZsUp++7ZAlyZ2lBKvkp0Zc0s6Y2nHjET6PKXlhzA==
+react-native-use-qili@^1.0.76:
+  version "1.0.76"
+  resolved "https://registry.yarnpkg.com/react-native-use-qili/-/react-native-use-qili-1.0.76.tgz#63aebad53da8b08d6756b489a89d10b4abf4f2a3"
+  integrity sha512-x47aDe7UTWZfrQf0ZMizfDwdn3DTDE4C2XU1XuOOj8y4n+7fqGEpMtvpNtVsjK/XivzSqTHQF4Avu66lJoBCEQ==
   optionalDependencies:
     "@reduxjs/toolkit" "^1.8.6"
     expo-file-system "^15.2.2"
