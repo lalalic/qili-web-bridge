@@ -26,9 +26,8 @@ function Home(){
     const [accessTokens, setAccessTokens]=React.useState([])
     const [token, setLatestToken]=React.useState("")
     const [creating, setCreating]=React.useState(false)
-    const [helpers, setHelpers]=React.useState([])
     const getAccessTokens=React.useCallback(async ()=>{
-        const {accessTokens, helpers}=(await Qili.fetch({
+        const {accessTokens}=(await Qili.fetch({
             query:`{
                 me{
                   accessTokens {
@@ -38,13 +37,10 @@ function Home(){
                     updatedAt
                     hiddenID
                   }
-
-                  helpers
                 }
               }`
         })).me
         setAccessTokens(accessTokens)
-        setHelpers(helpers)
     },[setAccessTokens])
 
     React.useEffect(()=>{
@@ -84,7 +80,7 @@ function Home(){
 
 
             <View style={{flexGrow:1}}/>
-                <Text>You are helping with names: [{helpers.join(",")}]</Text>
+                <ShowHelpers/>
                 {!!creating && <AccessTokenGenerator 
                     style={{position:"absolute",bottom:0,width:"100%",padding:20, backgroundColor:"gray"}}
                     onCancel={e=>setCreating(false)}
@@ -129,5 +125,28 @@ function AccessTokenGenerator({onCancel, onSubmit, style}){
                 </View>
             </View>
         </View>
+    )
+}
+
+function ShowHelpers(props){
+    const [helpers, setHelpers]=React.useState([])
+    const refresh=React.useCallback(async ()=>{
+        const {me:{helpers}}=Qili.fetch({
+            query:`query{me{helpers}}`
+        })
+        setHelpers(helpers)
+    },[])
+    React.useEffect(()=>{
+        const timer=setInterval(refresh,60*1000)
+        return ()=>clearInterval(timer)
+    },[])
+
+
+    return (
+        <Pressable onPress={refresh}>
+            <Text {...props}>
+                {helpers.length>0 && `You are helping under names: [${helpers.join(",")}]` || " "}
+            </Text>
+        </Pressable>
     )
 }
