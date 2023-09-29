@@ -6949,10 +6949,10 @@ react-native-snap-carousel@^3.9.1:
     prop-types "^15.6.1"
     react-addons-shallow-compare "15.6.2"
 
-react-native-use-qili@^1.0.98:
-  version "1.0.98"
-  resolved "https://registry.yarnpkg.com/react-native-use-qili/-/react-native-use-qili-1.0.98.tgz#192da256bc999b8f960db07db00265b072adf7eb"
-  integrity sha512-wfSpUPA3g+m7LORoz1W6lF83WadpkxppkiyShkaH3/O4CcxD+KjTpUaUD561K5vCHP/FpXS9wU+5iebyvjJCJg==
+react-native-use-qili@^1.0.101:
+  version "1.0.101"
+  resolved "https://registry.yarnpkg.com/react-native-use-qili/-/react-native-use-qili-1.0.101.tgz#843cc98a28bb902c5fa8a170c0b470e19f6babae"
+  integrity sha512-NAGtJ39EKCWxpYJ6i8I5LOgZPlivwzlc6whJZNom/OHdx1G2mPDgc0EbWerc7FwqLtCvzl2K8jUWTdZhrdHhpg==
   dependencies:
     deprecated-react-native-prop-types "^4.2.1"
     expo-constants "^14.4.2"
