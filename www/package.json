@@ -7,7 +7,7 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "build-bro":"node -p \"require('react-native-use-qili/scripts/chrome-extension-to-service.js')(require('path').dirname(require.resolve('react-native-use-qili/bridge-chrome-extension/qili.js')))\"",
+    "build-bro": "node -p \"require('react-native-use-qili/scripts/chrome-extension-to-service.js')(require('path').dirname(require.resolve('react-native-use-qili/bridge-chrome-extension/qili.js')))\"",
     "build-crx": "node -p \"require('zip-dir')(require('path').dirname(require.resolve('react-native-use-qili/bridge-chrome-extension')),{saveTo:'./web-build/chrome-extension.zip'})\"",
     "build": "npx expo export:web && yarn build-bro && yarn build-crx"
   },
@@ -17,7 +17,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-native": "0.71.8",
-    "react-native-use-qili": "^1.0.77",
+    "react-native-use-qili": "^1.0.105",
     "react-native-web": "~0.18.10"
   },
   "devDependencies": {
