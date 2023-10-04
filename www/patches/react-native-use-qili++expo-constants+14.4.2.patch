@@ -1,0 +1,11 @@
+diff --git a/node_modules/react-native-use-qili/node_modules/expo-constants/src/ExponentConstants.web.ts b/node_modules/react-native-use-qili/node_modules/expo-constants/src/ExponentConstants.web.ts
+index 04de8a4..10061bf 100644
+--- a/node_modules/react-native-use-qili/node_modules/expo-constants/src/ExponentConstants.web.ts
++++ b/node_modules/react-native-use-qili/node_modules/expo-constants/src/ExponentConstants.web.ts
+@@ -1,5 +1,5 @@
+ import { Platform } from 'expo-modules-core';
+-import { v4 as uuidv4 } from 'uuid';
++import uuidv4 from 'uuid/v4';
+ 
+ import {
+   ExecutionEnvironment,
