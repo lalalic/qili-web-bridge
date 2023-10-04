@@ -1,6 +1,7 @@
 import "./style.css"
+import "./l10n"
 import React from "react"
-import {View, Pressable, Text, TextInput, Button, Modal} from "react-native"
+import {View, Pressable, Text, TextInput, Button} from "react-native"
 import { NativeRouter, Route, Routes} from "react-router-native"
 import storage from 'redux-persist/lib/storage'
 import {Qili, Provider}  from "react-native-use-qili/store"
@@ -10,7 +11,7 @@ export default function App(){
     return (
         <Provider {...{storage}}>
             <View style={{flex:1}}>
-                <Login.Required>
+                <Login.Required Container={({children})=>children}>
                     <NativeRouter>
                         <Routes>
                             <Route path="/" element={<Home/>}/>
