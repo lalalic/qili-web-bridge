@@ -17,16 +17,7 @@ jobs:
     - run: sudo apt-get install -y sshpass
     - uses: actions/checkout@v3
       with:
-        fetch-depth: 2
-    - uses: actions/setup-node@v2
-      with:
-        node-version: '16'
-    - name: build www
-      run: |
-        cd www
-        yarn
-        yarn global add npx
-        yarn build
+        fetch-depth: 1
     - name: deploy cloud code to qili2
       run: | 
           export SSHPASS=${{ secrets.SERVER_PASS }}
