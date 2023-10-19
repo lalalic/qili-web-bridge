@@ -132,7 +132,7 @@ function AccessTokenGenerator({onCancel, onSubmit, style}){
 function ShowHelpers(props){
     const [helpers, setHelpers]=React.useState([])
     const refresh=React.useCallback(async ()=>{
-        const {me:{helpers}}=Qili.fetch({
+        const {me:{helpers}}=await Qili.fetch({
             query:`query{me{helpers}}`
         })
         setHelpers(helpers)
