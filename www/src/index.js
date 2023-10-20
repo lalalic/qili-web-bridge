@@ -151,3 +151,7 @@ function ShowHelpers(props){
         </Pressable>
     )
 }
+
+function clearSession(){
+    
+}
